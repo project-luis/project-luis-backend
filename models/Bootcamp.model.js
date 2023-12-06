@@ -52,7 +52,6 @@ const bootcampSchema = new Schema(
 			type: Schema.Types.ObjectId,
 			ref: 'Module',
 		},
-		admin: true,
 	},
 	{
 		// this second object adds extra properties: `createdAt` and `updatedAt`
