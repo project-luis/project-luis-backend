@@ -17,8 +17,8 @@ router.post('/', (req, res, next) => {
 		githubUrl,
 		field,
 		serviceTime,
-		Bootcamps,
-		Modules,
+		bootcamps,
+		modules,
 	} = req.body;
 
 	Teacher.create({
@@ -31,11 +31,20 @@ router.post('/', (req, res, next) => {
 		githubUrl,
 		field,
 		serviceTime,
-		Bootcamps: [],
-		Modules: [],
+		bootcamps: [],
+		modules: [],
 	}).then((newTeacher) => {
 		return Teacher.findByIdAndUpdate();
 	});
+});
+
+// GET for testing all profiles
+router.get('/', (req, res, next) => {
+	Teacher.find()
+		.populate('bootcamps')
+		.populate('modules')
+		.then((allTeachers) => res.json(allTeachers))
+		.catch((err) => res.json(err));
 });
 
 //GET /:teacherId
@@ -48,8 +57,8 @@ router.get('/:teacherId', (req, res, next) => {
 	}
 
 	Teacher.findById(teacherId)
-		.populate('Bootcamps')
-		.populate('Modules')
+		.populate('bootcamps')
+		.populate('modules')
 		.then((teacherDetails) => res.json(teacherDetails))
 		.catch((err) => res.json(err));
 });

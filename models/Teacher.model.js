@@ -41,13 +41,13 @@ const teacherSchema = new Schema(
 		serviceTime: {
 			type: Number,
 		},
-		Bootcamps: [
+		bootcamps: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'Bootcamp',
 			},
 		],
-		Modules: [
+		modules: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: 'Module',

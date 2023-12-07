@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
 		startDate,
 		endDate,
 		daysofWeek,
-		Modules,
+		modules,
 	} = req.body;
 
 	Bootcamp.create({
@@ -36,7 +36,7 @@ router.post('/', (req, res, next) => {
 		startDate,
 		endDate,
 		daysofWeek,
-		Modules: [],
+		modules: [],
 	})
 		.then((response) => res.json(response))
 		.catch((err) => {
@@ -74,7 +74,7 @@ router.post('/:bootcampId/module', (req, res, next) => {
 		.then((newModule) => {
 			const { bootcampId } = req.params;
 			return Bootcamp.findByIdAndUpdate(bootcampId, {
-				$push: { module: newModule._id },
+				$push: { modules: newModule._id },
 			});
 		})
 		.then((response) => {
@@ -86,25 +86,25 @@ router.post('/:bootcampId/module', (req, res, next) => {
 //GET /bootcamps - Retreieve all of the bootcamps
 router.get('/', (req, res, next) => {
 	Bootcamp.find()
-		.populate('Module')
-		.populate('Teacher')
+		.populate('modules')
+		.populate('teacher')
 		.then((allBootcamps) => res.json(allBootcamps))
 		.catch((err) => res.json(err));
 });
 
 //GET /bootcamps/:bootcampId - Retrieves a spesific Bootcamp by id
-router.get('/:bootcampId', (res, req, next) => {
+router.get('/:bootcampId', (req, res, next) => {
 	const { bootcampId } = req.params;
-
+	
 	if (!mongoose.Types.ObjectId.isValid(bootcampId)) {
 		res.status(400).json({ message: 'Specified id is not valid' });
 		return;
 	}
-
+	
 	Bootcamp.findById(bootcampId)
-		.populate('Module')
-		.populate('Teacher')
-		.then((bootcamp) => res.status(200).json(bootcamp))
+		.populate('modules')
+		.populate('teacher')
+		.then((bootcampDetails) => res.json(bootcampDetails))
 		.catch((err) => res.json(err));
 });
 
@@ -117,7 +117,7 @@ router.put('/:bootcampId', (req, res, next) => {
 		return;
 	}
 
-	Module.findByIdAndUpdate(bootcampId, req.body, { new: true })
+	Bootcamp.findByIdAndUpdate(bootcampId, req.body, { new: true })
 		.then((updatedBootcamp) => res.json(updatedBootcamp))
 		.catch((err) => res.json(err));
 });
@@ -131,7 +131,7 @@ router.delete('/:bootcampId', (req, res, next) => {
 		return;
 	}
 
-	Module.findByIdAnRemove(bootcampId)
+	Bootcamp.findByIdAndDelete(bootcampId)
 		.then(() =>
 			res.json({
 				message: `Bootcamp with ${bootcampId} is removed successfully`,

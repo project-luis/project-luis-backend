@@ -35,7 +35,7 @@ router.delete('/:moduleId', (req, res, next) => {
 		return;
 	}
 
-	Module.findByIdAnRemove(moduleId)
+	Module.findByIdAndDelete(moduleId)
 		.then(() =>
 			res.json({ message: `Bootcamp with ${moduleId} is removed successfully` })
 		)
