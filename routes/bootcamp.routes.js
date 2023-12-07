@@ -45,12 +45,11 @@ router.post('/bootcamps', (req, res, next) => {
 });
 
 //POST /bootcamps - Creates a new module
-router.post('/bootcamps', (req, res, next) => {
+router.post('/bootcamps/:bootcampId/module', (req, res, next) => {
 	const {
 		name,
 		description,
 		bootcamps,
-		teachers,
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
@@ -65,7 +64,6 @@ router.post('/bootcamps', (req, res, next) => {
 		name,
 		description,
 		bootcamps: [],
-		teachers: [],
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
@@ -75,6 +73,12 @@ router.post('/bootcamps', (req, res, next) => {
 		endTime,
 		daysofWeek,
 	})
+		.then((newModule) => {
+			const { bootcampId } = req.params;
+			return Bootcamp.findByIdAndUpdate(bootcampId, {
+				$push: { module: newModule._id },
+			});
+		})
 		.then((response) => {
 			res.json(response);
 		})

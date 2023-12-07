@@ -48,10 +48,12 @@ const bootcampSchema = new Schema(
 		daysofWeek: {
 			type: Number,
 		},
-		Modules: {
-			type: Schema.Types.ObjectId,
-			ref: 'Module',
-		},
+		modules: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Module',
+			},
+		],
 	},
 	{
 		// this second object adds extra properties: `createdAt` and `updatedAt`
@@ -62,3 +64,23 @@ const bootcampSchema = new Schema(
 const Bootcamp = model('Bootcamp', bootcampSchema);
 
 module.exports = Bootcamp;
+
+// add mod to boot
+// - Boot,create()
+// - Boot.fındBIdAndUpdate
+
+// detaıls of Module, see related Bootcamps
+
+// dısplay detaıls of Bootcamp --> Boot.fındById().populate("module")
+// dısplay detaıls of a Module --> Module.fındBygiId() + Boot.fındById()
+
+// opt 1 and opt 2:
+// R  --> may be more dıffıcult
+// C U D  --> easıer
+
+// opt 3:
+// R  --> easıer
+// C U D  --> may be more dıffıcult
+
+// create bootcamp UX
+// Boot.create() + Module.fındByIdANdUpdate()
