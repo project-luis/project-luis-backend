@@ -8,10 +8,10 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 // Require the Teacher model in order to interact with the database
-const Teacher = require('../models/Teacher.model.js');
+const Teacher = require('./models/Teacher.model.js');
 
 // Require necessary (isAuthenticated) middleware in order to control access to specific routes
-const { isAuthenticated } = require('../middleware/jwt.middleware.js');
+const { isAuthenticated } = require('./middleware/jwt.middleware.js');
 
 // How many rounds should bcrypt run the salt (default - 10 rounds)
 const saltRounds = 10;
