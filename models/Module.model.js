@@ -11,10 +11,6 @@ const moduleSchema = new Schema(
 			type: String,
 			default: '',
 		},
-		teacher: {
-			type: Schema.Types.ObjectId,
-			ref: 'Teacher',
-		},
 		avatarUrl: {
 			type: String,
 			default:

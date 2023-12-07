@@ -40,15 +40,18 @@ const teacherSchema = new Schema(
 		serviceTime: {
 			type: Number,
 		},
-		Bootcamps: {
-			type: Schema.Types.ObjectId,
-			ref: 'Bootcamp',
-		},
-		Modules: {
-			type: Schema.Types.ObjectId,
-			ref: 'Module',
-		},
-		admin: true,
+		Bootcamps: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Bootcamp',
+			},
+		],
+		Modules: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Module',
+			},
+		],
 	},
 	{
 		// this second object adds extra properties: `createdAt` and `updatedAt`
