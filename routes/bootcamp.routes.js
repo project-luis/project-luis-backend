@@ -44,8 +44,8 @@ router.post('/bootcamps', (req, res, next) => {
 		});
 });
 
-//POST /boomcamps/modules - Creates a new module
-router.post('/bootcamps/modules', (req, res, next) => {
+//POST /bootcamps - Creates a new module
+router.post('/bootcamps', (req, res, next) => {
 	const {
 		name,
 		description,
@@ -104,3 +104,17 @@ router.get('/bootcamps/:bootcampId', (res, req, next) => {
 		.then((bootcamp) => res.status(200).json(bootcamp))
 		.catch((err) => res.json(err));
 });
+
+// GET /bootcamps/modules/:moduleId **** ????
+
+
+// PUT /bootcamps/:bootcampsId - update specific bootcamp by id
+
+
+// PUT /bootcamps/modules/:moduleId - update specific module
+
+
+// DELETE /bootcamps/:bootcampId
+
+
+// DELETE /bootcamps/modules/:moduleId
