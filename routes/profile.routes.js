@@ -38,8 +38,6 @@ router.post('/profile', (req, res, next) => {
 	});
 });
 
-
-
 //GET /:teacherId
 router.get('/profile/:teacherId', (req, res, next) => {
 	const { teacherId } = req.params;
@@ -82,8 +80,10 @@ router.delete('/profile/:teacherId', (req, res, next) => {
 	Teacher.findByIdAndDelete(teacherId)
 		.then(() =>
 			res.json({
-				message: 'Teacher was successfully deleted'
+				message: 'Teacher was successfully deleted',
 			})
 		)
 		.catch((err) => res.json(err));
 });
+
+module.exports = router;
