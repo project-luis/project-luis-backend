@@ -49,8 +49,6 @@ router.post('/bootcamps', (req, res, next) => {
 	const {
 		name,
 		description,
-		bootcamps,
-		teachers,
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
@@ -64,8 +62,6 @@ router.post('/bootcamps', (req, res, next) => {
 	Module.create({
 		name,
 		description,
-		bootcamps: [],
-		teachers: [],
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
@@ -77,6 +73,7 @@ router.post('/bootcamps', (req, res, next) => {
 	})
 		.then((response) => {
 			res.json(response);
+
 		})
 		.catch((err) => res.json(err));
 });
@@ -100,7 +97,8 @@ router.get('/bootcamps/:bootcampId', (res, req, next) => {
 	}
 
 	Bootcamp.findById(bootcampId)
-		.populate('module')
+		.populate('Module')
+		.populate('Teacher')
 		.then((bootcamp) => res.status(200).json(bootcamp))
 		.catch((err) => res.json(err));
 });
@@ -160,7 +158,7 @@ router.delete('/bootcmaps/:bootcampId', (req, res, next) => {
 });
 
 // DELETE /bootcamps/modules/:moduleId
-router.delete('/bootcmaps/modules/:moduleId', (req, res, next) => {
+router.delete('/bootcamps/modules/:moduleId', (req, res, next) => {
 	const { moduleId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(moduleId)) {
@@ -174,3 +172,29 @@ router.delete('/bootcmaps/modules/:moduleId', (req, res, next) => {
 		)
 		.catch((err) => res.json(err));
 });
+
+
+
+// add mod to boot
+// - Boot,create()
+// - Boot.fındBIdAndUpdate
+
+// detaıls of Module, see related Bootcamps
+
+
+
+
+// dısplay detaıls of Bootcamp --> Boot.fındById().populate("module")
+// dısplay detaıls of a Module --> Module.fındBygiId() + Boot.fındById()
+
+
+// opt 1 and opt 2:
+// R  --> may be more dıffıcult 
+// C U D  --> easıer
+
+// opt 3:
+// R  --> easıer
+// C U D  --> may be more dıffıcult 
+
+// create bootcamp UX
+// Boot.create() + Module.fındByIdANdUpdate()
