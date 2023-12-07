@@ -12,7 +12,7 @@ const studentSchema = new Schema(
 			required: [true, 'Password is required.'],
 		},
 		email: {
-			type: email,
+			type: String,
 			required: [true, 'Email is required.'],
 			lowercase: true,
 			trim: true,
