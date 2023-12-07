@@ -6,7 +6,7 @@ const Bootcamp = require('../models/Bootcamp.model.js');
 const Module = require('../models/Module.model.js');
 
 //POST /bootcamps - Creates a new bootcamp
-router.post('/bootcamps', (req, res, next) => {
+router.post('/', (req, res, next) => {
 	const {
 		name,
 		description,
@@ -45,7 +45,7 @@ router.post('/bootcamps', (req, res, next) => {
 });
 
 //POST /bootcamps - Creates a new module
-router.post('/bootcamps/:bootcampId/module', (req, res, next) => {
+router.post('/:bootcampId/module', (req, res, next) => {
 	const {
 		name,
 		description,
@@ -84,7 +84,7 @@ router.post('/bootcamps/:bootcampId/module', (req, res, next) => {
 });
 
 //GET /bootcamps - Retreieve all of the bootcamps
-router.get('/bootcamps', (req, res, next) => {
+router.get('/', (req, res, next) => {
 	Bootcamp.find()
 		.populate('Module')
 		.populate('Teacher')
@@ -93,7 +93,7 @@ router.get('/bootcamps', (req, res, next) => {
 });
 
 //GET /bootcamps/:bootcampId - Retrieves a spesific Bootcamp by id
-router.get('/bootcamps/:bootcampId', (res, req, next) => {
+router.get('/:bootcampId', (res, req, next) => {
 	const { bootcampId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(bootcampId)) {
@@ -109,7 +109,7 @@ router.get('/bootcamps/:bootcampId', (res, req, next) => {
 });
 
 // PUT /bootcamps/:bootcampsId - update specific bootcamp by id
-router.put('/bootcamps/:bootcampId', (req, res, next) => {
+router.put('/:bootcampId', (req, res, next) => {
 	const { bootcampId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(bootcampId)) {
@@ -123,7 +123,7 @@ router.put('/bootcamps/:bootcampId', (req, res, next) => {
 });
 
 // DELETE /bootcamps/:bootcampId
-router.delete('/bootcamps/:bootcampId', (req, res, next) => {
+router.delete('/:bootcampId', (req, res, next) => {
 	const { bootcampId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(bootcampId)) {
@@ -143,7 +143,7 @@ router.delete('/bootcamps/:bootcampId', (req, res, next) => {
 // --------------------------------------------------------------------  //
 
 //POST /bootcamps - Creates a new module
-router.post('/bootcamps/:bootcampId', (req, res, next) => {
+router.post('/:bootcampId', (req, res, next) => {
 	const {
 		name,
 		description,

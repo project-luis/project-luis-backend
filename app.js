@@ -27,19 +27,19 @@ app.use(express.static('public'));
 
 // 👇 Start handling routes here
 const indexRoutes = require('./routes/index.routes');
-app.use('/api', indexRoutes);
-
-const bootcampRouter = require('./routes/bootcamp.routes');
-app.use('/api', isAuthenticated, bootcampRouter);
-
-const moduleRouter = require('./routes/module.routes');
-app.use('/api', isAuthenticated, moduleRouter);
-
-const profileRouter = require('./routes/profile.routes');
-app.use('/api', isAuthenticated, profileRouter);
+app.use('/index', indexRoutes);
 
 const authRoutes = require('./auth.routes');
 app.use('/auth', authRoutes);
+
+const bootcampRouter = require('./routes/bootcamp.routes');
+app.use('/bootcamps', isAuthenticated, bootcampRouter);
+
+const moduleRouter = require('./routes/module.routes');
+app.use('/modules', isAuthenticated, moduleRouter);
+
+const profileRouter = require('./routes/profile.routes');
+app.use('/profile', isAuthenticated, profileRouter);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);

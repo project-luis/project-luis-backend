@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Module = require('../models/Module.model.js');
 
 // GET /modules/:moduleId - Retrieve single the Module
-router.get('/modules/:moduleId', (req, res, next) => {
+router.get('/:moduleId', (req, res, next) => {
 	const { moduleId } = req.params;
 	Module.findById(moduleId)
 		.then((moduleDetails) => res.json(moduleDetails))
@@ -13,7 +13,7 @@ router.get('/modules/:moduleId', (req, res, next) => {
 });
 
 // PUT /modules/:moduleId - update specific module
-router.put('/modules/:moduleId', (req, res, next) => {
+router.put('/:moduleId', (req, res, next) => {
 	const { moduleId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(moduleId)) {
@@ -27,7 +27,7 @@ router.put('/modules/:moduleId', (req, res, next) => {
 });
 
 // DELETE /modules/:moduleId
-router.delete('/modules/:moduleId', (req, res, next) => {
+router.delete('/:moduleId', (req, res, next) => {
 	const { moduleId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(moduleId)) {

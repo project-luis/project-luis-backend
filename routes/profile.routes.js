@@ -6,7 +6,7 @@ const Teacher = require('../models/Teacher.model');
 const Student = require('../models/Student.model');
 
 //POST /profile
-router.post('/profile', (req, res, next) => {
+router.post('/', (req, res, next) => {
 	const {
 		fullname,
 		password,
@@ -39,7 +39,7 @@ router.post('/profile', (req, res, next) => {
 });
 
 //GET /:teacherId
-router.get('/profile/:teacherId', (req, res, next) => {
+router.get('/:teacherId', (req, res, next) => {
 	const { teacherId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(teacherId)) {
@@ -55,7 +55,7 @@ router.get('/profile/:teacherId', (req, res, next) => {
 });
 
 //PUT /:teacherId
-router.put('/profile/:teacherId', (req, res, next) => {
+router.put('/:teacherId', (req, res, next) => {
 	const { teacherId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(teacherId)) {
@@ -69,7 +69,7 @@ router.put('/profile/:teacherId', (req, res, next) => {
 });
 
 //DELETE /:teacherId
-router.delete('/profile/:teacherId', (req, res, next) => {
+router.delete('/:teacherId', (req, res, next) => {
 	const { teacherId } = req.params;
 
 	if (!mongoose.Types.ObjectId.isValid(teacherId)) {
