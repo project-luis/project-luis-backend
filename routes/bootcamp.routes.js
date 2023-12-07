@@ -49,10 +49,6 @@ router.post('/bootcamps/:bootcampId/module', (req, res, next) => {
 	const {
 		name,
 		description,
-<<<<<<< HEAD
-		bootcamps,
-=======
->>>>>>> 349b2d26a63a3fa28262f0b72ef326538f92299e
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
@@ -66,10 +62,6 @@ router.post('/bootcamps/:bootcampId/module', (req, res, next) => {
 	Module.create({
 		name,
 		description,
-<<<<<<< HEAD
-		bootcamps: [],
-=======
->>>>>>> 349b2d26a63a3fa28262f0b72ef326538f92299e
 		avatarUrl,
 		moduleCode,
 		hoursPerWeek,
