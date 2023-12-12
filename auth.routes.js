@@ -101,10 +101,10 @@ router.post('/login', (req, res, next) => {
 
 			if (passwordCorrect) {
 				// Deconstruct the teacher object to omit the password
-				const { _id, email } = foundTeacher;
+				const { _id, email, fullName } = foundTeacher;
 
 				// Create an object that will be set as the token payload
-				const payload = { _id, email };
+				const payload = { _id, email, fullName };
 
 				// Create a JSON Web Token and sign it
 				const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
