@@ -7,10 +7,10 @@ const Module = require('../models/Module.model.js');
 
 //POST /bootcamps - Creates a new bootcamp
 router.post('/', (req, res, next) => {
+	console.log(req.payload);
 	const {
 		name,
 		description,
-		teacher,
 		avatarUrl,
 		languages,
 		fullOrPartTime,
@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
 	Bootcamp.create({
 		name,
 		description,
-		teacher,
+		teacher: req.payload._id,
 		avatarUrl,
 		languages,
 		fullOrPartTime,
@@ -95,12 +95,12 @@ router.get('/', (req, res, next) => {
 //GET /bootcamps/:bootcampId - Retrieves a spesific Bootcamp by id
 router.get('/:bootcampId', (req, res, next) => {
 	const { bootcampId } = req.params;
-	
+
 	if (!mongoose.Types.ObjectId.isValid(bootcampId)) {
 		res.status(400).json({ message: 'Specified id is not valid' });
 		return;
 	}
-	
+
 	Bootcamp.findById(bootcampId)
 		.populate('modules')
 		.populate('teacher')

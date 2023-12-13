@@ -29,7 +29,7 @@ app.use(express.static('public'));
 const indexRoutes = require('./routes/index.routes');
 app.use('/index', indexRoutes);
 
-const authRoutes = require('./auth.routes');
+const authRoutes = require('./routes/auth.routes');
 app.use('/auth', authRoutes);
 
 const bootcampRouter = require('./routes/bootcamp.routes');
