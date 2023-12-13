@@ -28,11 +28,11 @@ const teacherSchema = new Schema(
 		},
 		linkedInUrl: {
 			type: String,
-			default: '',
+			default: "https://",
 		},
 		githubUrl: {
 			type: String,
-			default: '',
+			default: "https://",
 		},
 		field: {
 			type: [String],
@@ -40,6 +40,10 @@ const teacherSchema = new Schema(
 		},
 		serviceTime: {
 			type: Number,
+		},
+		aboutUser: {
+			type: String,
+			default: "",
 		},
 		bootcamps: [
 			{

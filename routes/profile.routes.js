@@ -17,6 +17,7 @@ router.post('/', (req, res, next) => {
 		githubUrl,
 		field,
 		serviceTime,
+		aboutUser,
 		bootcamps,
 		modules,
 	} = req.body;
@@ -31,6 +32,7 @@ router.post('/', (req, res, next) => {
 		githubUrl,
 		field,
 		serviceTime,
+		aboutUser,
 		bootcamps: [],
 		modules: [],
 	}).then((newTeacher) => {
