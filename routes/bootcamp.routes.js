@@ -190,7 +190,7 @@ router.put('/addModule/:bootcampId', (req, res, next) => {
 	Bootcamp.findByIdAndUpdate(
 		bootcampId,
 		{
-			$push: { modules: moduleId },
+			$addToSet: { modules: moduleId },
 		},
 		{ new: true }
 	)
