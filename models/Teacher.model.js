@@ -20,7 +20,7 @@ const teacherSchema = new Schema(
 		},
 		avatarUrl: {
 			type: String,
-			default: 'https://static.thenounproject.com/png/1876981-200.png',
+			default: "",
 		},
 		languages: {
 			type: [String],
@@ -28,11 +28,11 @@ const teacherSchema = new Schema(
 		},
 		linkedInUrl: {
 			type: String,
-			default: "https://",
+			default: "",
 		},
 		githubUrl: {
 			type: String,
-			default: "https://",
+			default: "",
 		},
 		field: {
 			type: [String],
