@@ -181,4 +181,22 @@ router.post('/:bootcampId', (req, res, next) => {
 		.catch((err) => res.json(err));
 });
 
+//PUT /bootcamps/addModule/:bootcampId (with push ability)
+
+router.put('/addModule/:bootcampId', (req, res, next) => {
+	const { bootcampId } = req.params;
+	const { moduleId } = req.body;
+
+	Bootcamp.findByIdAndUpdate(
+		bootcampId,
+		{
+			$push: { modules: moduleId },
+		},
+		{ new: true }
+	)
+		.then(() => {
+			res.json('Success!');
+		})
+		.catch((err) => console.log(err));
+});
 module.exports = router;
